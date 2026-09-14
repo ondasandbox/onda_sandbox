@@ -1,0 +1,19 @@
+[
+  {
+    "product_name": "Komax sample airtight container",
+    "category": "airtight containers",
+    "rating": 4.6,
+    "review_count": 1250,
+    "recent_negative_themes": ["lid fit", "size expectation"],
+    "recent_positive_themes": ["storage convenience", "price satisfaction"]
+  },
+  {
+    "product_name": "Komax sample ice box",
+    "category": "ice boxes",
+    "rating": 4.3,
+    "review_count": 420,
+    "recent_negative_themes": ["insulation duration", "shipping scratches"],
+    "recent_positive_themes": ["lightweight", "camping use"]
+  }
+]
+

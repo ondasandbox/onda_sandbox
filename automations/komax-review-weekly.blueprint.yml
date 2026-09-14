@@ -1,0 +1,23 @@
+name: komax-review-weekly
+schedule: every Monday at 09:00 Asia/Seoul
+skill: skills/komax-review-intelligence/SKILL.md
+mode: weekly
+source: sandbox/komax_reviews/
+archive:
+  type: notion
+  database: Onda Komax Review Reports
+runtime_output: .runtime/reports/komax-reviews/weekly/
+deliver:
+  type: external-archive
+  primary: notion
+  fallback_outbox: .runtime/outbox/
+prompt: >
+  Run the Komax Review Intelligence weekly analysis. Summarize product health,
+  positive and negative themes, listing issues, product improvement ideas, and
+  an action queue. Send the report to the configured external archive.
+safety:
+  may_modify_coupang: false
+  may_contact_customers: false
+  requires_human_review_for_actions: true
+validation:
+  command: python scripts/generate_komax_review_report.py --cadence weekly

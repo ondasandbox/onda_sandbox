@@ -1,0 +1,24 @@
+name: komax-review-monthly
+schedule: first day of every month at 10:00 Asia/Seoul
+skill: skills/komax-review-intelligence/SKILL.md
+mode: monthly
+source: sandbox/komax_reviews/
+archive:
+  type: notion
+  database: Onda Komax Review Reports
+runtime_output: .runtime/reports/komax-reviews/monthly/
+deliver:
+  type: external-archive
+  primary: notion
+  fallback_outbox: .runtime/outbox/
+prompt: >
+  Run the Komax Review Intelligence monthly strategy report. Analyze category
+  trends, strongest and weakest products, repeated issues, listing strategy,
+  product opportunities, and next-month priorities. Send the report to the
+  configured external archive.
+safety:
+  may_modify_coupang: false
+  may_contact_customers: false
+  requires_human_review_for_actions: true
+validation:
+  command: python scripts/generate_komax_review_report.py --cadence monthly

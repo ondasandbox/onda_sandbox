@@ -1,0 +1,23 @@
+name: komax-review-daily
+schedule: every day at 08:00 Asia/Seoul
+skill: skills/komax-review-intelligence/SKILL.md
+mode: daily
+source: sandbox/komax_reviews/
+archive:
+  type: notion
+  database: Onda Komax Review Reports
+runtime_output: .runtime/reports/komax-reviews/daily/
+deliver:
+  type: external-archive
+  primary: notion
+  fallback_outbox: .runtime/outbox/
+prompt: >
+  Run the Komax Review Intelligence daily scan. Detect meaningful changes,
+  urgent negative review signals, rating/review-count movement, and products
+  needing immediate attention. Send the report to the configured external archive.
+safety:
+  may_modify_coupang: false
+  may_contact_customers: false
+  requires_human_review_for_actions: true
+validation:
+  command: python scripts/generate_komax_review_report.py --cadence daily
